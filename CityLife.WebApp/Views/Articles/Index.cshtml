@@ -1,0 +1,82 @@
+﻿@model CityLife.WebApp.Models.News.ArticlesViewModel
+@{
+    ViewBag.Title = "Новости города Камышин.";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid">
+    <div class="row wrapper-page">
+        @if (ViewBag.ServerErrorMessage != null)
+    {
+            <h2 class="color-red">@ViewBag.ServerErrorMessage</h2>
+    }
+        <div class="col-md-2">
+            <div class="list-group">
+                <div class="list-group-item-heading">
+                    Новостные теги
+                    @if (User.IsInRole("Root"))
+                {
+                        <a href="/root/references" class="">
+                            <i class="glyphicon glyphicon-cog"></i>
+                        </a>
+                }
+                </div>
+                @foreach (var tag in Model.Tags ?? new List<CityLife.Entities.Models.References.ApplicationReferences>())
+            {
+                    <div class="list-group-item">
+                        <a href="/articles/@tag.Alias.ToLower()" class="">@tag.Name</a>
+                        @if (User.IsInRole("Root"))
+                    {
+                            <a href="/root/references/editreferences/@tag.Id" class="pull-right"><i class="glyphicon glyphicon-cog"></i></a>
+                    }
+                    </div>
+            }
+            </div>
+            <hr />
+            <div class="list-group">
+                <div class="list-group-item-heading">
+                    Объявления
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="row card-wrapper">
+                @foreach (var item in Model.Articles ?? new List<CityLife.WebApp.Models.News.ArticleViewModel>())
+            {
+                    <div class="item-card col-md-4 transition">
+                        <div class="panel-default">
+                            <div class="item-article" style="background-image:url('@(string.IsNullOrEmpty(item.PathPreview)?"/content/img/splash.jpg":$"/uploads/news/pr/{item.PathPreview}") ')">
+                                <a href="/articles/article/@item.Alias">
+                                    <div class="title-article">
+                                        <div class="text-left date-article">@item.DateCreate.ToShortDateString()</div>
+                                        <div class="text-title">
+                                            <h4>@item.Title</h4>
+                                        </div>
+                                        <span class="tags-article">@item.Tags</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="descr-article">
+                                @item.ShortDescript
+                            </div>
+                            <div class="card-foot">
+                                <div class="card-foot-right">
+                                    @if (User.IsInRole("Root") || User.IsInRole("Administrator") || User.IsInRole("Moderator"))
+                                {
+                                        <a href="/moderator/citynews/edit/@item.Id" class="">Редактировать</a>
+                                }
+                                    <a href="/articles/article/@item.Alias" class="transition card-art-link">
+                                        хочу прочитать
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            }
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="col-md-9">banner - 1</div>
+            <div class="col-md-9">banner - 2</div>
+        </div>
+    </div>
+</div>

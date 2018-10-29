@@ -1,0 +1,29 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/citylife_template/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/citylife_template/css/modern-business.css" rel="stylesheet" />
+    <link href="~/Content/citylife_template/css/style.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/cab_template/vendors/bower_components/tooltipster-master/dist/css/tooltipster.bundle.min.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Content/cab_template/vendors/bower_components/jquery-autocomplete/jquery.autocomplete.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    @Html.Action("TopNavigate", "Widgets")
+    @RenderBody()
+    @RenderSection("scripts", false)
+    <script src="~/Scripts/CustomScripts/global/global.js"></script>
+    <script src="~/Content/cab_template/vendors/bower_components/tooltipster-master/dist/js/tooltipster.bundle.min.js"></script>
+</body>
+</html>

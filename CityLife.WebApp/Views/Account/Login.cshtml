@@ -1,0 +1,87 @@
+﻿@model CityLife.WebApp.Models.Account.LoginViewModel
+
+@{
+    ViewBag.Title = "Вход";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var googleProvider = Model.ExternalProvider.FirstOrDefault(x => x.Caption == "Google");
+    var vkProvider = Model.ExternalProvider.FirstOrDefault(x => x.Caption == "VKontakte");
+}
+<div class="container-fluid wrapper-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 center-block pt-15">
+                <div class="logo-inverse"></div>
+            </div>
+        </div>
+    </div>
+    <h3 class="h3 text-center">@ViewBag.Title</h3>
+    <div class="container">
+        <div class="row">
+            <div class="center-block col-lg-4 col-md-4" style="float:none;">
+                <div class="panel panel-default wrap-panel">
+                    <div class="panel-body">
+                        <div>
+                            <label class="color-silver font-light pb-15">Внешние сервисы</label>
+                        </div>
+                        @using (Html.BeginForm("ExternalLogin", "Account", new { provider = googleProvider.Caption }, FormMethod.Post, new { }))
+                    {
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-round-red transition">Вход через @googleProvider.Caption</button>
+                    }
+                        @using (Html.BeginForm("ExternalLogin", "Account", new { provider = vkProvider.Caption }, FormMethod.Post, new { }))
+                    {
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-round-blue transition">Вход через Vk</button>
+                    }
+                        <div>
+                            <label class="color-silver font-light pt-15">Стандартный вход</label>
+                        </div>
+                        <div class="text-center">
+                            @Html.ValidationSummary()
+                        </div>
+                        @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+                    {
+
+                    <div class="">
+                        @Html.AntiForgeryToken()
+
+                        @Html.HiddenFor(p => p.ReturnUrl)
+                        <div class="form-group">
+                            <label for="name">Электронная почта</label>
+                            @Html.TextBoxFor(p => p.Email, new { placeholder = "Электронная почта", @class = "form-control", id = "name" })
+                            @Html.ValidationMessageFor(x => x.Email, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Пароль</label>
+                            @Html.PasswordFor(p => p.Password, new { placeholder = "Пароль", @class = "form-control", id = "password" })
+                            @Html.ValidationMessageFor(x => x.Password, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="rememberme">Запомнить меня</label>
+
+                            @Html.CheckBoxFor(p => p.RememberMe, new { id = "rememberme" })
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="col-xs-7 btn btn-blue transition" id="btn-submit" style="display:block; margin:auto; float:none;">
+                                Продолжить
+                            </button>
+                        </div>
+                    </div>
+                    }
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Scripts/Jqueryval/jquery.validate.min.js"></script>
+    <script src="~/Scripts/Jqueryval/jquery.validate.unobtrusive.js"></script>
+    <script>
+
+    </script>
+}

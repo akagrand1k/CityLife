@@ -1,0 +1,69 @@
+﻿@model CityLife.WebApp.Areas.Root.Models.Classifier.ClassifierViewModel
+@{
+    ViewBag.Title = "Редактирование  классификатора";
+}
+<!-- BEGIN SAMPLE FORM PORTLET-->
+<div class="row mt-10">
+    <div class="col-md-12">
+        <div class="panel panel-default card-view">
+            <div class="panel-wrapper collapse in">
+                <div class="panel-heading">
+                    <h6 class="txt-dark">
+                        <i class="icon-settings"></i> Редактирование классификатора
+                    </h6>
+                </div>
+            </div>
+        </div>    
+    </div>    
+</div>
+<div class="panel panel-default card-view">
+    <div class="panel-wrapper collapse in">
+       
+        <div class="panel-body">
+            <div>
+                @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+                    <div class="form-body">
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label" for="form_control_1">Наименование</label>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(x => x.Name, new { @class = "required form-control" })
+                                @Html.ValidationMessageFor(x => x.Name)
+                                <div class="form-control-focus">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label" for="Description">Описание</label>
+                            <div class="col-md-5">
+                                @Html.TextAreaFor(x => x.Description, new { @class = "form-control", rows = "15" })
+                                @Html.ValidationMessageFor(x => x.Description)
+                                <div class="form-control-focus">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group form-md-line-input">
+                            <label class="col-md-2 control-label">Активна ? (да/нет)</label>
+                            <div class="col-md-5">
+                                @Html.CheckBoxFor(x => x.IsActive)
+                            </div>
+                        </div>
+                        @Html.ValidationSummary()
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <button class="btn btn-primary">
+                                        Сохранить
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>      
+</div>
+<!-- END SAMPLE FORM PORTLET-->

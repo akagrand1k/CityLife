@@ -1,0 +1,186 @@
+﻿@model CityLife.WebApp.Models.Default.Navigate
+@using CityLife.Extensions.Constant;
+<ul class="nav navbar-nav side-nav nicescroll-bar" style="overflow: hidden; width: auto; height: 100%;">
+    @if (!string.IsNullOrEmpty(Model.CurrentRole))
+    {
+        <li class="navigation-header">
+            <span>Кабинет</span>
+            <i class="zmdi zmdi-more"></i>
+        </li>
+        if (Model.CurrentRole == RoleConstant.RoleRoot)//только с правами Root
+        {
+        <li class="">
+            <a href="~/Root/Home" class="@(Model.CurrentUrl == "/root/home" ? "active" : "")">
+                <div class="pull-left">
+                    <i class="fa fa-home mr-20"></i>
+                    <span class="right-nav-text">Root dashboard</span>
+                </div>                
+                <div class="clearfix"></div>
+            </a>
+        </li>
+        }
+        if (Model.CurrentRole == RoleConstant.RoleAdmin || Model.CurrentRole == RoleConstant.RoleRoot)//только с правами Root и Admin
+        {
+        <li class="">
+            <a href="@Url.Action("Index", "Statistic", new { area = "Administrator" })" class="@(Model.CurrentUrl == "/administrator/statistic".ToLower() ? "active" : "")">
+                <div class="pull-left">
+                    <i class="fa fa-pie-chart mr-20"></i>
+                    <span class="right-nav-text">Статистика</span>
+                </div>
+                <div class="pull-right"></div>
+                <div class="clearfix"></div>
+            </a>
+        </li>
+        }
+        if (Model.CurrentRole == RoleConstant.RoleAdmin || Model.CurrentRole == RoleConstant.RoleRoot)//только с правами Root и Admin
+        {
+            <li class="">
+                <a href="@Url.Action("Index","UsersAndGroups",new { area = "Administrator" })" class="@(Model.CurrentUrl=="/administrator/usersandgroups".ToLower()?"active":"")">
+                    <div class="pull-left">
+                        <i class="fa fa-user mr-20"></i>
+                        <span class="right-nav-text">Пользователи</span>
+                    </div>
+                    <div class="pull-right"></div>
+                    <div class="clearfix"></div>                                        
+                </a>
+            </li>
+        }
+
+        if (Model.CurrentRole == RoleConstant.RoleRoot)//только с правами Root
+        {
+            <li class="">                
+                <a href="javascript:void(0);" class="@(Model.CurrentUrl.IndexOf("references")>0?"active collapsed":"")" data-toggle="collapse" data-target="#ref" aria-expanded="false">
+                    <div class="pull-left">
+                        <i class="fa fa-cubes mr-20"></i>
+                        <span class="right-nav-text">Справочники</span>
+                    </div>
+                    <div class="pull-right">                        
+                        <i class="zmdi zmdi-caret-down"></i>
+                    </div>
+                    <div class="clearfix"></div> 
+                                                          
+                </a>
+                <ul class="collapse-level-1 two-col-list collapse in" id="ref">
+                    <li>
+                        <a href="@Url.Action("Index","References",new { area = "Root" })" class="@(Model.CurrentUrl=="/root/references"?"active-page":"")">
+                            <i class="fa fa-cube"></i> Общие
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("SysReferences","References",new { area = "Root" })" class="@(Model.CurrentUrl=="/root/references/sysreferences"?"active-page":"")">
+                            <i class="fa fa-cogs"></i> Системные
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        }
+        if (Model.CurrentRole != RoleConstant.RoleUser)//RoleConstant.RoleRoot || Model.CurrentRole == RoleConstant.RoleModerator)//только с правами Root или модератор
+        {
+        <li>
+            <a href="javascript:void(0);" class="@(Model.CurrentUrl == "/root/classifier".ToLower() || Model.CurrentUrl == "/moderator/organizations".ToLower() ? "active" : "")" data-toggle="collapse" data-target="#org" aria-expanded="false">
+                <div class="pull-left">
+                    <i class="icon-puzzle mr-20"></i>
+                    <span class="right-nav-text">Организации</span>
+                </div>
+                <div class="pull-right">
+                    <i class="zmdi zmdi-caret-down"></i>
+                </div>
+                <div class="clearfix"></div>                                                               
+            </a>
+            <ul class="collapse-level-1 two-col-list collapse in" id="org">
+                @if (Model.CurrentRole == RoleConstant.RoleRoot)
+                {
+                    <li>
+                        <a href="@Url.Action("Index", "Classifier", new { area = "Root" })"class="@(Model.CurrentUrl == "/root/classifier" ? "active-page" : "")">
+                            <i class="fa fa-list-alt"></i>
+                            <span class="title">Классификаторы</span>
+                        </a>
+                    </li>
+                }
+                <li>
+                    <a href="@Url.Action("Index", "Organizations", new { area = "Moderator" })" class="@( Model.CurrentUrl == "/moderator/organizations" ? "active-page" : "")">
+                        <i class="fa fa-building-o"></i>
+                        <span class="title">Организации</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        }
+        if (Model.CurrentRole == RoleConstant.RoleRoot || Model.CurrentRole == RoleConstant.RoleAdmin)
+        {
+            <li>
+                <a href="javascript:void(0);" class="@(Model.CurrentUrl.IndexOf("sections")>0?"active":"")" data-toggle="collapse" data-target="#sections" aria-expanded="false">
+                    <div class="pull-left">
+                        <i class="fa fa-share-alt mr-20"></i>
+                        <span class="right-nav-text">Разделы</span>
+                    </div>
+                    <div class="pull-right">
+                        <i class="zmdi zmdi-caret-down"></i>
+                    </div>
+                    <div class="clearfix"></div>
+                    <span class="arrow"></span>                  
+                </a>
+                <ul class="sub-menu" id="sections">
+                    <li>
+                        <a href="@Url.Action("Index","Sections",new { area = "Administrator" })" class="@(Model.CurrentUrl=="/administrator/sections"?"active-page":"")">
+                            <i class="fa fa-eye"></i>
+                            <span class="title">Активные разделы</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Disabled","Sections",new { area = "Administrator" })" class="@(Model.CurrentUrl=="/administrator/sections/disabled"?"active-page":"")">
+                            <i class="fa fa-eye-slash"></i>
+                            <span class="title">Неактивные разделы</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        }
+        if (Model.CurrentRole != RoleConstant.RoleUser)
+        {
+        <li>
+            <a href="javascript:void(0);" class="@(Model.CurrentUrl.IndexOf("citynews") > 0 ? "active" : "")" data-toggle="collapse" data-target="#news" aria-expanded="false">                
+                <div class="pull-left">
+                    <i class="fa fa-font mr-20"></i>
+                    <span class="right-nav-text">Новости</span>
+                </div>
+                <div class="pull-right">
+                    <i class="zmdi zmdi-caret-down"></i>
+                </div>
+                <div class="clearfix"></div>               
+            </a>
+            <ul class="sub-menu" id="news">
+                <li>
+                    <a href="~/moderator/citynews" class="@(Model.CurrentUrl == "/moderator/citynews" ? "active-page" : "")">
+                        <i class="fa fa-table"></i>
+                        <span class="title">Все статьи</span>
+                    </a>
+                </li>
+                @*if (Model.CurrentRole != RoleConstant.RoleUser)
+                {*@
+                <li>
+                    <a href="~/moderator/citynews/edit" class="@(Model.CurrentUrl == "/moderator/citynews/edit" ? "active" : "")">
+                        <i class="fa fa-file-text-o"></i>
+                        <span class="title">Редактор</span>
+                    </a>
+                </li>
+                @*}*@
+            </ul>
+        </li>
+        }
+        if (Model.CurrentRole == RoleConstant.RoleRoot || Model.CurrentRole == RoleConstant.RoleAdmin)
+        {
+            <li>
+                <a href="@Url.Action("Index","TemplatePages",new { area = "Administrator" })" class="@(Model.CurrentUrl=="/administrator/templatepages"?"active":"")">
+                    <div class="pull-left">
+                        <i class="fa fa-newspaper-o mr-20"></i>
+                        <span class="right-nav-text">Шаблоны страниц</span>
+                    </div>                    
+                    <div class="clearfix"></div>                                        
+                </a>
+            </li>
+        }
+
+    }
+
+</ul>

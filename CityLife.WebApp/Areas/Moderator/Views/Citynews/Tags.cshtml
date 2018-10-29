@@ -1,0 +1,167 @@
+﻿
+@{
+    ViewBag.Title = "Теги статей";
+    Layout = "~/Views/Shared/_BackendLayout.cshtml";
+    string tableId = "tags-grid";
+}
+
+<div class="row heading-bg">
+    <h3 class="txt-dark">@ViewBag.Title</h3>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default card-view">
+            <div class="panel-wrapper collapse in">
+                <div class="panel-body">
+                    <a href="@Url.Action("EditTag", "Article", new { area = "Moderator"})" class="btn btn-info btn-lable-wrap left-label" style="text-transform:none;">
+                        <span class="btn-label"><i class="fa fa-pencil"></i> </span>
+                        <span class="btn-text">Добавить тег</span>
+                    </a>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <!-- Begin: life time stats -->
+        <div class="panel panel-default card-view">
+            <div class="panel-heading">
+                <div class="pull-left">
+                    <i class="fa fa-cogs mr-20"></i>
+                    <h6" class="panel-title txt-dark">Список новостей</h6">
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="panel-wrapper collapse in">
+                <div class="panel-body">
+                    <table class="table table-hover display pb-30 dataTable" id="@tableId" role="grid">
+                        <thead>
+                            <tr role="row" class="heading">
+                                <th>#</th>
+                                <th>
+                                    Наименование
+                                </th>
+                                <th>
+                                    Alias
+                                </th>
+                                <th>
+                                    Дата создания
+                                </th>
+                                <th>
+                                    Дата обновления
+                                </th>
+                                <th>Активность тега</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                        <tfoot>
+                            <tr>
+                                <th>#</th>
+                                <th>
+                                    Наименование
+                                </th>
+                                <th>
+                                    Alias
+                                </th>
+                                <th>
+                                    Дата создания
+                                </th>
+                                <th>
+                                    Дата обновления
+                                </th>
+                                <th>Активность тега</th>
+                                <th></th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- End: life time stats -->
+    </div>
+</div>
+<!-- END PAGE CONTENT INNER -->
+<input type="hidden" value="@ViewBag.CurrentRole" id="_z" />
+
+@section Scripts{
+    <script>
+        //в конечном варианте все скрипты необходимо вытащить из кусков разметки, сделать отдельными минимизированными файлами.
+        $(document).ready(function () {
+            var dataTable = $('#@tableId').DataTable({
+                'order': [[1, "desc"]],
+                'iDisplayLength': 25,
+                'responsive':true,
+                'processing': true,
+                'serverSide': true,
+                'bFilter':false,
+                'ajax': {
+                    'url': '/Moderator/Article/GetTags',//listUrl,
+                    'data': {
+                        IsActive:true
+                    }
+                },
+                "language": {
+                    //   "url": "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Russian.json"
+                    "url": "/Scripts/datatable/russian.json"
+                },
+                "columns": [
+                        { "data": "Id", "autoWidth": true, },
+                        { "data": "Name", "autoWidth": true },
+                        { "data": "Alias", "autoWidth": true },
+                        { "data":"DateCreate","autoWidth":true},
+                        { "data": "DateUpdate", "autoWidth": true },
+                        { "data": "Active", "autoWidth": true },
+                        { "data": "Id", "autoWidth": true },
+                    ]
+            });
+
+            $('#@tableId').on('draw.dt', function () {
+                InitEditBtnForTable(dataTable);
+            });
+
+            function InitEditBtnForTable(dataTable) {
+                $('#@tableId tbody tr').each(function (i) {
+                    var id = $(this).children('td:nth-child(1)').text();
+
+                    var z = $('#_z').val();
+
+                    if (z=="Root") {
+
+                        var btnEdit =
+                            '<a href="/Moderator/Article/EditTag/' + id + '">' +
+                                '<button class="btn btn-primary btn-icon-anim btn-square"><i class="fa fa-pencil"></i></button>' +
+                            '</a>';
+
+                        var btnDel =
+                            '<form action="/Moderator/Citynews/Delete/" method="POST" style="display:inline-block;" class="ml-10">' +
+                                '<input type="hidden" name="id" value="' + id + '"/>'+
+                                '<button type="submit" class="btn btn-info btn-icon-anim btn-square">' +
+                                    '<i class="icon-trash"></span>' +
+                                '</button>' +
+                            '</form>';
+
+                        $(this).children('td:nth-child(7)').html(btnEdit + btnDel);
+                    }
+                    else {
+                        var btnEdit =
+                            '<a href="/Moderator/Article/EditTag/' + id + '"  class="">' +
+                            '<i class="fa fa-edit"></span>' +
+                            '</a>';
+
+                        $(this).children('td:nth-child(7)').html(btnEdit);
+                    }
+                });
+
+                isGet = false;
+            }
+
+            function toDateFromJson(src) {
+                return new Date(parseInt(src.substr(6)));
+            }
+
+        });
+    </script>
+}

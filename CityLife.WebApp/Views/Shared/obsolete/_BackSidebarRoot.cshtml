@@ -1,0 +1,118 @@
+﻿@model CityLife.WebApp.Models.Default.Navigate
+@using CityLife.Extensions.Constant;
+<ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+
+    <li class="@(Model.CurrentUrl=="/Root/Home"?"start active":"start")">
+        <a href="~/Root/Home">
+            <i class="icon-home"></i>
+            <span class="title">Root Главная</span>
+            @if (string.IsNullOrEmpty(Model.CurrentRole))
+            {
+            }
+            }{
+#line default
+#line hidden
+
+#line 4 "E:\Work\Citylife\CityLife\CityLife.WebApp\Views\Shared\_BackSidebarRoot.cshtml"
+           __o <span class="selected"></span>
+            }
+        </a>
+    </li>
+    <li class="@(Model.CurrentUrl=="/Root/Home"?"start active":"start")">
+        <a href="@Url.Action("Index","Statistic",new { area = "Administrator" })">
+            <i class="fa fa-pie-chart"></i>
+            <span class="title">Статистика</span>
+            @if (Model.CurrentUrl == "/Root/Home")
+            {
+                <span class="selected"></span>
+            }
+        </a>
+    </li>
+    @if (Model.CurrentRole != RoleConstant.RoleModerator)
+    {
+        <li class="@(Model.CurrentUrl=="/Administrator/UsersAndGroups"?"active":"")">
+            <a href="@Url.Action("Index","UsersAndGroups",new { area = "Administrator" })">
+                <i class="icon-user"></i>
+                <span class="title">Пользователи</span>
+                @if (Model.CurrentUrl == "/Administrator/UsersAndGroups")
+                {
+                    <span class="selected"></span>
+                }
+            </a>
+        </li>
+    }
+
+    @if (Model.CurrentRole == RoleConstant.RoleRoot)
+    {
+        <li class="@(Model.CurrentUrl.IndexOf("References")>0?"active":"")">
+            <a href="javascript:;">
+                <i class="fa fa-cubes"></i>
+                <span class="title">Справочники</span>
+                <span class="arrow"></span>
+                @if (Model.CurrentUrl.IndexOf("References") > 0)
+                {
+                    <span class="selected"></span>
+                }
+
+            </a>
+            <ul class="sub-menu">
+                <li>
+
+                    <a href="@Url.Action("Index","References",new { area = "Root" })"><i class="fa fa-cube"></i> Общие</a>
+                </li>
+                <li>
+
+                    <a href="@Url.Action("SysReferences","References",new { area = "Root" })"><i class="fa fa-cogs"></i> Системные</a>
+                </li>
+            </ul>
+        </li>
+    }
+
+    <li class="@(Model.CurrentUrl=="/Root/Classifier" ||Model.CurrentUrl=="/Moderator/Organizations"?"active":"")">
+        <a href="javascrpt:;">
+            <i class="icon-puzzle"></i>
+            <span class="title">Организации</span>
+            <span class="arrow"></span>
+            @if (Model.CurrentUrl == "/Root/Classifier" || Model.CurrentUrl == "/Moderator/Organizations")
+            {
+                <span class="selected"></span>
+            }
+        </a>
+        <ul class="sub-menu">
+            @if (Model.CurrentRole == RoleConstant.RoleRoot)
+            {
+                <li>
+                    <a href="@Url.Action("Index","Classifier",new { area = "Root" })">
+                        <i class="fa fa-list-alt"></i>
+                        <span class="title">Классификаторы</span>
+                    </a>
+                </li>
+            }
+
+            <li>
+                <a href="@Url.Action("Index","Statistic",new { area = "Administrator" })">
+                    <i class="fa fa-building-o"></i>
+                    <span class="title">Организации</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+
+    @if (Model.CurrentRole != RoleConstant.RoleModerator)
+    {
+        <li class="@(Model.CurrentUrl=="/Administrator/UsersAndGroups"?"active":"")">
+            <a href="@Url.Action("Index","UsersAndGroups",new { area = "Administrator" })">
+                <i class="fa fa-newspaper-o"></i>
+                <span class="title">Шаблоны страниц</span>
+                @if (Model.CurrentUrl == "/Administrator/UsersAndGroups")
+                {
+                    <span class="selected"></span>default
+#line hidden
+
+#line 33 "E:\Work\Citylife\CityLife\CityLife.WebApp\Views\Shared\_BackSidebarRoot.cshtml"
+                __o = Url.Action("Index","TemplatePages",new { area = "Administrator" }
+            </a>
+        </li>
+    }
+
+</ul>

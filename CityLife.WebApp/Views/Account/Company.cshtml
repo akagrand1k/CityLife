@@ -1,0 +1,298 @@
+﻿@model  CityLife.WebApp.Models.Organization.OrgRegisterViewModel
+@{
+    ViewBag.Title = "Регистрация компании";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 center-block pt-15">
+            <div class="logo-inverse"></div>
+        </div>
+    </div>
+</div>
+<h2 class="h2 text-center text-shadow">@ViewBag.Title</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="center-block col-md-8">
+            <div class="panel panel-default wrap-panel">
+
+                <div class="panel-body">
+                    <div class="">
+                        @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.HiddenFor(x => x.Latitude)
+                            @Html.HiddenFor(x => x.Longitude)
+
+                            @Html.AntiForgeryToken()
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Электронная почта</label>
+                                    @Html.TextBoxFor(p => p.Email, new { placeholder = "Электронная почта", @class = "form-control" })
+                                    @Html.ValidationMessageFor(x => x.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Пароль</label>
+                                    @Html.PasswordFor(p => p.Password, new
+                               {
+                                   placeholder = "Пароль",
+                                   @class = "form-control pass",
+                                   title = "Минимальная длина пароля 8 символов.Пароль должен иметь минимум:одну цифру, один символ нижнего регистра, один символ верхнего регистра."
+                               })
+                                    @Html.ValidationMessageFor(x => x.Password, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Подтверждение пароля</label>
+                                    @Html.PasswordFor(p => p.ConfirmPassword, new
+                               {
+                                   placeholder = "Подтверждение пароля",
+                                   @class = "form-control pass",
+                                   title = "Минимальная длина пароля 8 символов.Пароль должен иметь минимум:одну цифру, один символ нижнего регистра, один символ верхнего регистра."
+                               })
+                                    @Html.ValidationMessageFor(x => x.ConfirmPassword, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Наименование организации</label>
+                                    @Html.TextBoxFor(p => p.Name, new { placeholder = "Наименование", @class = "form-control" })
+                                    @Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Логотип</label>
+                                    @*<div class="dropify-wrapper" style="height:100px;">
+            <div class="dropify-message"><span class="file-icon"></span> <p>Перетащите или выберите файл</p><p class="dropify-error">Ooops, something wrong appended.</p></div><div class="dropify-loader"></div>
+            <div class="dropify-errors-container"><ul></ul></div>
+            <input type="file" id="input-file-now-custom-2" class="dropify" data-height="500">
+            <button type="button" class="dropify-clear">Удалить</button><div class="dropify-preview">
+                <span class="dropify-render"></span><div class="dropify-infos">
+                    <div class="dropify-infos-inner">
+                        <p class="dropify-filename"><span class="file-icon"></span> <span class="dropify-filename-inner"></span></p><p class="dropify-infos-message">Drag and drop or click to replace</p>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+                                    @Html.TextBoxFor(x => x.LogoFile, new { type = "file", @class = "form-control"})
+
+                                    @Html.ValidationMessageFor(x => x.LogoFile)
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Раздел</label>
+                                    @Html.DropDownListFor(x => x.ClassifierId, (SelectList)ViewBag.ListСlassifikate, "Выберите раздел", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(x => x.ClassifierId, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Краткое описание</label>
+                                    @Html.TextBoxFor(p => p.ShortDescription, new { placeholder = "Краткое описание", @class = "form-control" })
+                                    @Html.ValidationMessageFor(x => x.ShortDescription, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Подробное описание</label>
+                                    @Html.TextAreaFor(p => p.DetailsDescription, new { placeholder = "Подробное описание", @class = "form-control" })
+                                    @Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-12">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Улица</label>
+                                        @Html.TextBoxFor(p => p.Street, new { placeholder = "Улица", @class = "form-control" })
+                                        @Html.ValidationMessageFor(x => x.Street, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Дом</label>
+                                        @Html.TextBoxFor(p => p.Home, new { placeholder = "Дом", @class = "form-control" })
+                                        @Html.ValidationMessageFor(x => x.Home, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Строение</label>
+                                        @Html.TextBoxFor(p => p.Building, new { placeholder = "Строение", @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-md-4 col-md-offset-8">
+                                        <a class="col-xs-7 btn btn-blue transition" id="geoFind" style="display:block;margin:10px; float:none;font-weight:bold;">
+                                            Найти
+                                        </a>
+                                    </div>
+                                    <span style="display:none;" id="help-box">
+                                        Вы можете уточнить местоположение на карте!
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div id="yandexMap" style="height:400px;margin:10px;">
+
+                                </div>
+
+                            </div>
+
+
+
+                            <button class="col-xs-7 btn btn-blue transition" id="btn-submit" style="display:block;margin:auto; float:none;">
+                                Продолжить
+                            </button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+@section scripts{
+    <script src="~/Scripts/Jqueryval/jquery.validate.min.js"></script>
+    <script src="~/Scripts/Jqueryval/jquery.validate.unobtrusive.js"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        var MarksCollection;
+        var myMap;
+        var myPlacemark;
+
+        ymaps.ready(init);
+        //инициализация коллекции меток, только после загрузки ymaps. иначе бобо.
+        ymaps.ready(function () {
+            MarksCollection = new ymaps.GeoObjectCollection();
+        })
+
+
+        function init() {
+            myMap = new ymaps.Map("yandexMap", {
+                center: [50.088420, 45.410653],
+                zoom: 15
+            }, {
+                //balloonMaxWidth: 200,
+                //searchControlProvider: 'yandex#search'
+            });
+            AddressByClickMaps();
+        }
+
+        $('#geoFind').on('click', function () {
+            FindAddress();
+            $('#help-box').attr('style', 'display:block;float:right;color:#45447d;');
+        });
+
+        function FindAddress() {
+            var address = 'Камышин ' + $('#Street').val() + ' ' + $('#Home').val() + ' ' + $('#Building').val();
+
+            ymaps.geocode(address, {
+                results: 1
+            }).then(function (res) {
+                //удаление старых меток
+                myMap.geoObjects.removeAll();
+                var firstGeoObject = res.geoObjects.get(0),
+
+                coords = firstGeoObject.geometry.getCoordinates(),//координаты
+                bounds = firstGeoObject.properties.get('boundedBy');//привязка на карте для нового центрирования
+                myPlacemark = createPlacemark(coords);
+                myMap.geoObjects.add(myPlacemark);
+
+                myMap.setBounds(bounds, {
+                    checkZoomRange: true
+                });
+                setCoordinates(coords);
+            });
+        }
+
+
+        //обработка обычного клика по карте(смена координат,перезапись после поиска по кнопке).
+        function AddressByClickMaps() {
+            myMap.events.add('click', function (e) {
+                var coords = e.get('coords');
+                if (myPlacemark) {
+                    myPlacemark.geometry.setCoordinates(coords);
+
+                }
+                else {
+                    myPlacemark = createPlacemark(coords);
+                    myMap.geoObjects.add(myPlacemark);
+                    setCoordinates(coords);
+                    myPlacemark.events.add('dragend', function () {
+                        getAddress(myPlacemark.geometry.getCoordinates());
+                    });
+                    setCoordinates(e);
+                }
+                $('#Latitude').val(coords[0]);
+                $('#Longitude').val(coords[1]);
+            });
+        }
+
+        // Создание метки.
+        function createPlacemark(coords) {
+            myMap.geoObjects.removeAll();
+            return new ymaps.Placemark(coords, {
+                iconCaption: 'поиск...',
+            }, {
+                iconLayout: 'default#image',
+                iconImageHref: '@Url.Content("~/Content/citylife_template/images/city-logo-inverse.png")',
+                iconImageSize: [50, 50],
+            }, {
+                preset: 'islands#violetDotIconWithCaption',
+                draggable: true
+            });
+        }
+
+        // Определяем адрес по координатам (обратное геокодирование).
+        function getAddress(coords) {
+            myPlacemark.properties.set('iconCaption', 'поиск...');
+            ymaps.geocode(coords).then(function (res) {
+                var firstGeoObject = res.geoObjects.get(0);
+                setCoordinates(firstGeoObject.geometry.getCoordinates());
+                myPlacemark.properties
+                    .set({
+                        iconCaption: [
+                         firstGeoObject.properties.get('name'),
+                        ].filter(Boolean).join(', '),
+                        balloonContent: firstGeoObject.getAddressLine()
+                    });
+            });
+        }
+
+        //запись координат в хайдовые переменные
+        function setCoordinates(GeoObject) {
+            $('#Latitude').val(GeoObject[0]);
+            $('#Longitude').val(GeoObject[1]);
+        }
+
+        //tooltip для пароля
+        $('.pass').tooltip({
+            offset: [-8, 15],
+            effect: "fade",
+            opacity: 0.7,
+            my: "left+25 center",
+            at: "right center"
+        });
+    </script>
+
+} 

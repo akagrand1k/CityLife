@@ -1,0 +1,30 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="CityLife.DALImplementation" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="AppRole_Root" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Root</Value>
+    </Setting>
+    <Setting Name="AppRole_Administrator" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Administrator</Value>
+    </Setting>
+    <Setting Name="AppRole_Moderator" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Moderator</Value>
+    </Setting>
+    <Setting Name="AppRole_User" Type="System.String" Scope="User">
+      <Value Profile="(Default)">User</Value>
+    </Setting>
+    <Setting Name="AppUser_Root_Name" Type="System.String" Scope="User">
+      <Value Profile="(Default)">kamcitylife@yandex.ru</Value>
+    </Setting>
+    <Setting Name="AppUser_Root_Email" Type="System.String" Scope="User">
+      <Value Profile="(Default)">kamcitylife@yandex.ru</Value>
+    </Setting>
+    <Setting Name="AppUser_Root_Password" Type="System.String" Scope="User">
+      <Value Profile="(Default)">a!sads0185%!Sasd</Value>
+    </Setting>
+    <Setting Name="AppRole_Organization" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Organization</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

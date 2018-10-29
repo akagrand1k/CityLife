@@ -1,0 +1,37 @@
+﻿@model CityLife.WebApp.Areas.Administrator.Models.Classifier.ClassifierViewModel
+@{
+    ViewBag.Title = "Редактирование  классификатора";
+}
+<!-- BEGIN SAMPLE FORM PORTLET-->
+<div class="portlet light">
+    <div class="portlet-title">
+        <div class="caption font-green-haze">
+            <i class="icon-settings font-green-haze"></i>
+            <span class="caption-subject bold uppercase"> Редактирование классификатора</span>
+        </div>
+    </div>
+    <div class="portlet-body form">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+            <div class="form-body">
+                @Html.AntiForgeryToken()
+
+                <div class="form-group form-md-line-input">
+                    <label class="col-md-2 control-label" for="form_control_1">Наименование</label>
+                    <div class="col-md-5">
+                        @Html.TextBoxFor(x => x.Name, new { @class = "required form-control" })
+                        @Html.ValidationMessageFor(x => x.Name)
+                        <div class="form-control-focus">
+                        </div>
+                    </div>
+                </div>
+
+                @Html.ValidationSummary()
+                <button class="btn green">
+                    Сохранить
+                </button>
+            </div>
+        }
+    </div>
+</div>
+<!-- END SAMPLE FORM PORTLET-->

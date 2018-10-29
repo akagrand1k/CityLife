@@ -1,0 +1,58 @@
+﻿@model CityLife.WebApp.Models.Profile.ProfileViewModel
+
+@if (User.IsInRole("Root"))
+{
+    <div class="row">
+        <div class="col-xs-4 text-center">
+            <span class="counts block head-font"><span class="counter-anim">@Model.CountUser</span></span>
+            <span class="counts-text block">Пользователей</span>
+        </div>
+        <div class="col-xs-4 text-center">
+            <span class="counts block head-font"><span class="counter-anim">@Model.CountCompany</span></span>
+            <span class="counts-text block">Компаний</span>
+        </div>
+        <div class="col-xs-4 text-center">
+            <span class="counts block head-font"><span class="counter-anim">@Model.CountExceptionToday</span></span>
+            <span class="counts-text block">Ошибок сегодня</span>
+        </div>
+    </div>
+
+}
+
+@if (User.IsInRole("Moderator"))
+{
+    <div class="row">
+        <div class="col-xs-4 text-center">
+            <span class="counts block head-font"><span class="counter-anim">@Model.CountCompany</span></span>
+            <span class="counts-text block">Компаний</span>
+        </div>
+        @*<div class="col-xs-4 text-center">
+            <span class="counts block head-font"><span class="counter-anim">246</span></span>
+            <span class="counts-text block">followers</span>
+        </div>
+        <div class="col-xs-4 text-center">
+            <span class="counts block head-font"><span class="counter-anim">898</span></span>
+            <span class="counts-text block">tweets</span>
+        </div>*@
+    </div>
+
+}
+
+@if (User.IsInRole("User"))
+{
+    <div class="row">
+        <div class="col-xs-4 text-center">
+            <span class="counts block head-font"><span class="counter-anim">345</span></span>
+            <span class="counts-text block">post</span>
+        </div>
+        <div class="col-xs-4 text-center">
+            <span class="counts block head-font"><span class="counter-anim">246</span></span>
+            <span class="counts-text block">followers</span>
+        </div>
+        <div class="col-xs-4 text-center">
+            <span class="counts block head-font"><span class="counter-anim">898</span></span>
+            <span class="counts-text block">tweets</span>
+        </div>
+    </div>
+
+}

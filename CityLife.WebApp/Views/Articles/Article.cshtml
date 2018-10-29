@@ -1,0 +1,93 @@
+﻿@model CityLife.WebApp.Models.News.ArticleViewModel
+@{
+    ViewBag.Title = "Article";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .article-wrap {
+        margin: auto;
+        float: none;
+        background-color: #FFF;
+        box-shadow: 1px 3px 8px rgba(0,0,0,0.14);
+    }
+
+    .article-content {
+        font-size: 17px;
+        line-height: 1.5;
+    }
+
+    .article-content h1, .article-content h2, .article-content h3,
+    .article-content h4, .article-content h5, .article-content h6,
+    .article-content .h1, .article-content .h2, .article-content .h3,
+    .article-content .h4, .article-content .h5, .article-content .h6,
+    .article-content h1 span, .article-content h2 span, h3 span,
+    .article-content h4 span, .article-content h5 span,
+    .article-content h6 span {
+        margin: 0;
+        padding: 0;
+        margin-bottom: 5px;
+        padding-bottom: 5px;
+        line-height: 1.5;
+    }
+
+    .article-content p img, .article-content div img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .footer-content {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+</style>
+<div class="container-fluid">
+    <div class="row">
+        <div class="item-article parallax-window" data-parallax="scroll" data-image-src="@(string.IsNullOrEmpty(Model.PathTitlePic)?"/content/img/splash.jpg":$"/uploads/news/pr/{Model.PathTitlePic}")">
+            <div class="title-article-art">
+                <div class="text-left date-article">@Model.DateCreate.ToShortDateString()</div>
+                <div class="text-title-art">
+                    <h1>@Model.Title</h1>
+                </div>
+                @foreach (var tag in Model.TagsList)
+                {
+                    <a href="/articles/@tag.Alias" class="article-tag transition">@tag.Name</a>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            Блок для доп новостей.
+        </div>
+        <div class="col-md-8" id="content">
+            <div class="col-md-9 article-wrap">
+                <div class="article-content" style="">
+                    @Html.Raw(Model.Content)
+                </div>
+                <hr />
+                <div class="footer-content">
+                    <h4>Редактор</h4>
+                    <div class="col-md-5">
+                        @*<div class="col-md-3">
+                            <img class="img-responsive img-circle" src="@(string.IsNullOrEmpty(Model.PathAutorAvatar)?"/content/img/user.png":$"/uploads/avatars/profile/{Model.PathAutorAvatar}")" />
+                        </div>*@
+                        <span>@(string.IsNullOrEmpty(Model.AutorName) ? "Автор неизвестен" : Model.AutorName)</span>
+                    </div>
+
+                    @if (User.IsInRole("Root") || User.IsInRole("Administrator") || User.IsInRole("Moderator"))
+                    {
+                        <a href="/moderator/citynews/edit/@Model.Id" class="">Редактировать</a>
+                    }
+                </div>
+                <hr />
+            </div>
+        </div>
+        <div class="col-md-2">
+            Блок рекламы
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/Scripts/parallax.min.js"></script>
+}

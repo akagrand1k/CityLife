@@ -1,0 +1,148 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>@ViewBag.Title</title>
+    <meta name="description" content="Doodle is a Dashboard &amp; Admin Site Responsive Template by hencework.">
+    <meta name="keywords" content="admin, admin dashboard, admin template, cms, crm, Doodle Admin, Doodleadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application">
+    <meta name="author" content="hencework">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <link href="~/content/cab_template/vendors/bower_components/jasny-bootstrap/dist/css/jasny-bootstrap.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Morris Charts CSS -->
+    @*<link href="~/content/cab_template/vendors/bower_components/morris.js/morris.css" rel="stylesheet" type="text/css">
+
+    <!-- vector map CSS -->
+    <link href="~/content/cab_template/vendors/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" type="text/css">
+
+    <!-- Calendar CSS -->
+    <link href="~/content/cab_template/vendors/bower_components/fullcalendar/dist/fullcalendar.css" rel="stylesheet" type="text/css">*@
+
+    <!-- Data table CSS -->
+    <link href="~/content/cab_template/vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Moment JavaScript -->
+    <script type="text/javascript" src="~/content/cab_template/vendors/bower_components/moment/min/moment-with-locales.min.js"></script>
+    <script src="~/Content/cab_template/vendors/bower_components/moment/min/moment.min.js"></script>
+    <!-- Bootstrap Datetimepicker CSS -->
+    <link href="~/content/cab_template/vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="~/Content/cab_template/vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.css" rel="stylesheet" />
+    <link href="~/Content/cab_template/vendors/bower_components/tooltipster-master/dist/css/tooltipster.bundle.min.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link href="~/content/cab_template/dist/css/style.css" rel="stylesheet" type="text/css">
+    
+    @RenderSection("styles", false)
+    @RenderSection("top_scripts", false)
+</head>
+<body>
+    <div class="preloader-it" style="display: none;">
+        <div class="la-anim-1 la-animate"></div>
+    </div>
+    <div class="wrapper theme-1-active pimary-color-red">
+        <div class="page-header navbar navbar-fixed-top">
+            @Html.Action("BackTopPanel", "Default")
+        </div>
+        <div class="fixed-sidebar-left">
+            <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 100%;">
+                @Html.Action("BackLeftSidebar", "Default")
+                <div class="slimScrollBar" style="background: rgb(135, 135, 135); width: 4px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 0px; z-index: 99; right: 1px; height: 677px;"></div>
+                <div class="slimScrollRail" style="width: 4px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div>
+            </div>
+        </div>
+        <div class="page-wrapper">
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    <!--[if lt IE 9]>
+    <script src="~/Content/cabinet_template/global/plugins/respond.min.js"></script>
+    <script src="~/Content/cabinet_template/global/plugins/excanvas.min.js"></script>
+    <![endif]-->
+
+    <script src="~/content/cab_template/vendors/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/content/cab_template/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Vector Maps JavaScript -->
+    <script src="~/content/cab_template/vendors/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
+    <script src="~/content/cab_template/vendors/vectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="~/content/cab_template/dist/js/vectormap-data.js"></script>
+
+    <!-- Calender JavaScripts -->
+    <script src="~/content/cab_template/vendors/bower_components/moment/min/moment.min.js"></script>
+    <script src="~/content/cab_template/vendors/jquery-ui.min.js"></script>
+    <script src="~/content/cab_template/vendors/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+    <script src="~/content/cab_template/dist/js/fullcalendar-data.js"></script>
+
+    <!-- Counter Animation JavaScript -->
+    <script src="~/content/cab_template/vendors/bower_components/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="~/content/cab_template/vendors/bower_components/jquery.counterup/jquery.counterup.min.js"></script>
+
+    <!-- Data table JavaScript -->
+    <script src="~/content/cab_template/vendors/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+
+    <!-- Slimscroll JavaScript -->
+    <script src="~/content/cab_template/dist/js/jquery.slimscroll.js"></script>
+
+    <!-- Fancy Dropdown JS -->
+    <script src="~/content/cab_template/dist/js/dropdown-bootstrap-extended.js"></script>
+
+    <!-- Sparkline JavaScript -->
+    <script src="~/content/cab_template/vendors/jquery.sparkline/dist/jquery.sparkline.min.js"></script>
+
+    <script src="~/content/cab_template/vendors/bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
+    <script src="~/content/cab_template/dist/js/skills-counter-data.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    @*<script src="~/content/cab_template/vendors/bower_components/raphael/raphael.min.js"></script>
+        <script src="~/content/cab_template/vendors/bower_components/morris.js/morris.min.js"></script>
+        <script src="~/content/cab_template/dist/js/morris-data.js"></script>*@
+
+
+    <!-- Owl JavaScript -->
+    <script src="~/content/cab_template/vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
+
+    <!-- Switchery JavaScript -->
+    <script src="~/content/cab_template/vendors/bower_components/switchery/dist/switchery.min.js"></script>
+
+    <!-- Gallery JavaScript -->
+    <script src="~/content/cab_template/dist/js/isotope.js"></script>
+    <script src="~/content/cab_template/dist/js/lightgallery-all.js"></script>
+    <script src="~/content/cab_template/dist/js/froogaloop2.min.js"></script>
+    <script src="~/content/cab_template/dist/js/gallery-data.js"></script>
+
+    <!-- Bootstrap Datetimepicker JavaScript -->
+    <script src="~/Content/cab_template/vendors/bower_components/moment/locale/ru.js"></script>
+    <script src="~/Content/cab_template/vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Content/cab_template/vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.js"></script>
+    <script src="~/Content/cab_template/vendors/bower_components/tooltipster-master/dist/js/tooltipster.bundle.min.js"></script>
+    <script src="~/Scripts/CustomScripts/global/global.js"></script>
+    <script src="~/Scripts/CustomScripts/Validate/validation.js"></script>
+    <!-- Spectragram JavaScript -->
+    <script src="~/content/cab_template/dist/js/spectragram.min.js"></script>
+
+    <!-- Init JavaScript -->
+    <script src="~/content/cab_template/dist/js/init.js"></script>
+    @RenderSection("scripts", false)
+</body>
+<!-- END BODY -->
+</html>

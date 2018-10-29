@@ -1,0 +1,58 @@
+﻿@model CityLife.WebApp.Models.Account.ExternalLoginViewModel
+@{
+    ViewBag.Title = "Привязка внешней учетной записи";
+}
+<div class="wrapper-page container-fluid">
+    <h2>@ViewBag.Title.</h2>
+    @if (Model.ExternLoginSucces)
+    {
+        <h3>Привязка учетной записи @ViewBag.LoginProvider.</h3>
+
+        using (Html.BeginForm("ExternalLoginConfirmation", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <h4>Уточнение ваших учетных данных.</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <p class="text-info">
+                Вы успешно прошли проверку подлинности через <strong>@ViewBag.LoginProvider</strong>
+                Введите имя пользователя на этом сайте ниже и нажмите кнопку "Зарегистрировать", чтобы завершить
+                вход.
+            </p>
+            if (!string.IsNullOrEmpty(Model.Email))
+            {
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            }
+            if (!string.IsNullOrEmpty(Model.Name))
+            {
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            }
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-default" value="Ok" />
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <h3>Ошибка привязки :(</h3>
+        <hr />
+        <a href="~/Account/login">Войдите используя стандартную проверку подлинности.</a>
+    }
+
+</div>

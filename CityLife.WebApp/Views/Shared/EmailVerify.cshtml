@@ -1,0 +1,25 @@
+﻿@model CityLife.WebApp.Models.EmailVerify
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<body>
+    <table width="552">
+        <tr>
+            <td>
+                <img src="cid:@Model.cid" alt="logo" />
+            </td>
+            <td></td>
+            <td>@DateTime.Now.ToShortDateString()</td>
+        </tr>
+        <tr>
+           <td>
+               <a href="@Model.CallbackUrl">Click for collback url</a>
+           </td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,60 @@
+﻿@model  CityLife.WebApp.Models.Account.RegisterViewModel
+@{
+    ViewBag.Title = "Регистрация";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid wrapper-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 center-block pt-15">
+                <div class="logo-inverse"></div>
+            </div>
+        </div>
+    </div>
+    <h2 class="h2 text-center text-shadow">@ViewBag.Title</h2>
+    <div class="container">
+        <div class="row">
+            <div class="center-block col-md-4">
+                <div class="panel panel-default wrap-panel">
+                    <div class="panel-body">
+                        <div class="">
+                            @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+    {
+                        @Html.ValidationSummary()
+                        @Html.AntiForgeryToken()
+                        <div class="form-group">
+                            <label>Электронная почта</label>
+                            @Html.TextBoxFor(p => p.Email, new { placeholder = "Электронная почта", @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Email, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label>Пароль</label>
+                            @Html.PasswordFor(p => p.Password, new { placeholder = "Пароль", @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Password, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label>Подтверждение пароля</label>
+                            @Html.PasswordFor(p => p.ConfirmPassword, new { placeholder = "Подтверждение пароля", @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.ConfirmPassword, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label>Являетесь представителем компании?<a href="~/Account/Company">Зарегистрироваться</a></label>
+                        </div>
+                        <button type="submit" class="col-xs-7 btn btn-blue transition" id="btn-submit" style="display:block;margin:auto; float:none;">
+                            Продолжить
+                        </button>
+}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/Jqueryval/jquery.validate.min.js"></script>
+    <script src="~/Scripts/Jqueryval/jquery.validate.unobtrusive.js"></script>
+} 

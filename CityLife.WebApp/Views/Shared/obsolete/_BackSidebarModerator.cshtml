@@ -1,0 +1,27 @@
+﻿@model CityLife.WebApp.Models.Default.Navigate
+<ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+    <li class="@(Model.CurrentUrl=="/Root/Home"?"start active":"start")">
+        <a href="~/Root/Home">
+            <i class="icon-home"></i>
+            <span class="title">Root Main</span>
+        </a>
+    </li>  
+    <li>
+        <a href="@Url.Action("Index","Pages",new { area = "Moderator" })">
+            <i class="fa fa-newspaper-o"></i>
+            <span class="title">Страницы</span>
+        </a>
+    </li> 
+    <li>
+        <a href="@Url.Action("Index","Classifier",new { area = "Moderator" })">
+            <i class="fa fa-list-alt"></i>
+            <span class="title">Классификатор</span>
+        </a>
+    </li> 
+    <li>
+        <a href="@Url.Action("Index","Organizations",new { area = "Moderator" })">
+            <i class="fa fa-building-o"></i>
+            <span class="title">Организации</span>
+        </a>
+    </li> 
+</ul>

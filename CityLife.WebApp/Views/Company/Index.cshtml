@@ -1,0 +1,142 @@
+﻿@model CityLife.WebApp.Models.Organization.CompanyViewModel
+
+@{
+    ViewBag.Title = "Организации";
+}
+<style>
+
+
+    .white-bg {
+        background: #fff;
+    }
+
+    .navbar-org ul li {
+        border-bottom: solid 1px rgb(206,206,206);
+        border-top: solid 1px rgb(206,206,206);
+        border-right: solid 1px rgb(206,206,206);
+        padding: 5px;
+    }
+
+    .navbar-org a {
+        color: #000;
+        font-weight:bold;
+    }
+
+    .navbar-org a:focus{
+        text-decoration:none;
+    }
+
+    .active a {
+        color: #6281fe;
+    }
+
+    .border-r {
+        border-right: solid 1px rgb(206,206,206);
+    }
+
+    
+
+
+
+</style>
+<div class="empty"></div>
+<div class="container-fluid nopadding">
+    <div class="col-md-2 nopadding white-bg navbar-org">
+        <h4 class="color-orange border-r nomargin-all" style="padding:8px;">Каталог организаций</h4>
+        <ul>
+            @foreach (var item in Model.ListKlassifier)
+            {
+                    <li><a href="#">@item</a></li>
+            }
+        </ul>
+    </div>
+    <div class="col-md-8 nopadding org-wrapper">
+        <div class="row nomargin-all nopadding-all nomargin-all">
+            <form action="/" method="post">
+                <div class="form-group pure-c-11 nopadding nomargin-all">
+                    <input type="text" id="organizations" class="form-control nopadding pull-left" value="" placeholder="Укажите название организации" />
+                </div>
+                <div class="form-group">
+                    <a href="#" class="btn btn-primary pull-right"><i class="fa fa-search"></i></a>
+                </div>
+            </form>
+        </div>
+        <div id="yandexMap" style="height:700px">
+
+        </div>
+    </div>
+    <div class="col-md-2">        
+            @Html.Action("Side", "Banner")        
+    </div>
+</div>
+
+@section Scripts{
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+
+    <script>
+        ymaps.ready(init);
+        //инициализация коллекции меток, только после загрузки ymaps. иначе бобо.
+        ymaps.ready(function () {
+            MarksCollection = new ymaps.GeoObjectCollection();
+        })
+
+        var myMap;
+        function init() {
+            myMap = new ymaps.Map("yandexMap", {
+                center: [50.088420, 45.410653],
+                zoom: 15,
+                controls: ['zoomControl']
+            }, {
+                //balloonMaxWidth: 200,
+                //searchControlProvider: 'yandex#search'
+            }),
+            clusterer = new ymaps.Clusterer({
+                clusterIcons: [
+                    {
+                        href: '@Url.Content("~/Content/citylife_template/images/city-logo-inverse.png")',
+                        size: [60, 60],
+                        //offset: [-20,-20]
+                    },
+                ],
+                clusterNumbers: [10],
+                clusterIconContentLayout: null,
+            });
+
+            objectManager = new ymaps.ObjectManager({
+                clusterize: true,
+                gridSize: 32,
+                clusterDisableClickZoom: true//запрет приближать карту при клике на кластеры
+            });
+
+            GetGeoPoints(objectManager);
+        }
+
+        //Кластеризатор
+
+        function GetGeoPoints(objectManager,type,critery) {
+            $.ajax({
+                url: '/Company/GetGeoPoints',
+                data: {
+                    type: type,
+                    critery: critery,
+                }
+            }).done(function (data) {
+                objectManager.add(data);
+            });
+        };
+
+        $(function () {
+            $('.navbar-org li a').on('click', function () {
+                $(this).parent().addClass('active').siblings().removeClass('active');
+            });
+        });
+
+
+
+        //Autocomplete search input
+        $('#organizations').autocomplete({
+            serviceUrl: '/Company/GetMatched',
+        });
+    </script>
+
+}

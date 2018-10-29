@@ -1,0 +1,96 @@
+﻿@model CityLife.WebApp.Areas.Moderator.Models.Organization.OrganizationViewModel
+
+@{
+    ViewBag.Title = "Редактирование организации";
+}
+<!-- BEGIN SAMPLE FORM PORTLET-->
+<div class="portlet light">
+    <div class="portlet-title">
+        <div class="caption font-green-haze">
+            <i class="icon-settings font-green-haze"></i>
+            <span class="caption-subject bold uppercase"> Редактирование организации</span>
+        </div>
+    </div>
+    <div class="portlet-body form">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+        {
+            <div class="form-body">
+                @Html.AntiForgeryToken()
+
+                <div class="form-group form-md-line-input">
+                    <label class="col-md-2 control-label" for="form_control_1">Логотип</label>
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(x => x.ImgFile, new { type = "file", @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.ImgFile)
+                        <div class="form-control-focus">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group form-md-line-input">
+                    <label class="col-md-2 control-label" for="form_control_1">Раздел</label>
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(x => x.ClassifierId, (SelectList)ViewBag.ListСlassifikate, "Выберите раздел", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.ClassifierId)
+                        <div class="form-control-focus">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group form-md-line-input">
+                    <label class="col-md-2 control-label" for="form_control_1">Наименование</label>
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(x => x.Name, new { @class = "required form-control" })
+                        @Html.ValidationMessageFor(x => x.Name)
+                        <div class="form-control-focus">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group form-md-line-input">
+                    <label class="col-md-2 control-label" for="form_control_1">Краткое описание</label>
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(x => x.ShortDescription, new { @class = "required form-control" })
+                        @Html.ValidationMessageFor(x => x.ShortDescription)
+                        <div class="form-control-focus">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group form-md-line-input">
+                    <label class="col-md-2 control-label" for="form_control_1">Подробное описание</label>
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(x => x.DetailsDescription, new { @class = "required form-control" })
+                        @Html.ValidationMessageFor(x => x.DetailsDescription)
+                        <div class="form-control-focus">
+                        </div>
+                    </div>
+                </div>
+                <!--Этот контрол видит святая троица Root, Admin, Moderator-->
+                  <div class="form-group form-md-line-input">
+                        <label class="col-md-2 control-label" for="form_control_1">Активна?</label>
+                        <div class="col-md-10">
+                            @Html.CheckBoxFor(x => x.IsActive)
+                        </div>
+                    </div>
+                
+                @if (Model.IsInRole("Root"))
+                {
+                    <div class="form-group form-md-line-input">
+                        <label class="col-md-2 control-label" for="form_control_1">Удалить</label>
+                        <div class="col-md-10">
+                            @Html.CheckBoxFor(x => x.IsActive)
+                        </div>
+                    </div>
+                }
+                
+                @Html.ValidationSummary()
+
+                <button class="btn green">
+                    Сохранить
+                </button>
+            </div>
+        }
+    </div>
+</div>
+<!-- END SAMPLE FORM PORTLET-->

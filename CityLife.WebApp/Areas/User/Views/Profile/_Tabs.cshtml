@@ -1,0 +1,114 @@
+﻿@using CityLife.Extensions.Constant
+@model CityLife.WebApp.Models.Profile.ProfileViewModel
+  
+<div class="tab-struct custom-tab-1">
+    <ul role="tablist" class="nav nav-tabs nav-tabs-responsive" id="myTabs_8">
+        <li class="active" role="presentation"><a data-toggle="tab" role="tab" href="#tab-events" aria-expanded="false"><span>Лента</span></a></li>
+        <li role="presentation" class="next"><a data-toggle="tab" role="tab" href="#tab-settings" aria-expanded="false"><span>Настройки</span></a></li>
+        @if (User.IsInRole(@RoleConstant.RoleRoot))
+        {
+        <li role="presentation" class=""><a data-toggle="tab" role="tab" href="#tab-exceptions" aria-expanded="false"><span>Исключения</span></a></li>
+        }
+    </ul>
+    <div class="tab-content" id="myTabContent_8">
+        <div id="tab-events" class="tab-pane fade active in" role="tabpanel">
+            <div class="col-md-12">
+                <div class="pt-20">
+                    <div class="streamline user-activity">
+                        <div class="sl-item">
+                            <a href="javascript:void(0)">
+                                <div class="sl-avatar avatar avatar-sm avatar-circle">
+                                    @*<img class="img-responsive img-circle" src="dist/img/user.png" alt="avatar">*@
+                                </div>
+                                <div class="sl-content">
+                                    <p class="inline-block"><span class="capitalize-font txt-success mr-5 weight-500">Example item</span><span>Example item time</span></p>
+                                    <span class="block txt-grey font-12 capitalize-font">3 Min</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="tab-settings" class="tab-pane fade" role="tabpanel">
+            <!-- Row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="">
+                        <div class="panel-wrapper collapse in">
+                            <div class="panel-body pa-0">
+                                <div class="col-sm-8 col-xs-8">
+                                    <div class="form-wrap">
+                                        <form role="form" id="profile-emailchange">
+                                            <h6 class="panel-title txt-dark" style="margin-bottom:20px;">Смена email</h6>
+                                            <div class="form-body overflow-hide">
+                                                <div class="form-group">
+                                                    <label class="control-label mb-10" for="exampleInputEmail_01">Email</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon"><i class="icon-envelope-open"></i></div>
+                                                        <input type="email" class="form-control" name="user-email" id="user-email" value="@Model.Email" placeholder="xyz@gmail.com">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-actions mt-10">
+                                                <button type="submit" id="email-change" class="btn btn-success mr-10 mb-30">Сменить email</button>
+                                            </div>
+                                        </form>
+                                        @*<form role="form" id="profile-passchange">
+                                            <h6 class="panel-title txt-dark" style="margin-bottom:20px;">Смена пароля</h6>
+                                            <div class="form-body overflow-hide">
+                                                <div class="form-group">
+                                                    <label class="control-label mb-10" for="old-pass">Текущий пароль</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon"><i class="icon-lock"></i></div>
+                                                        <input type="password" class="form-control" id="old-pass" placeholder="Текущий пароль">
+                                                    </div>
+                                                    <label class="control-label mb-10" for="new-pass">Новый пароль</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon"><i class="icon-lock"></i></div>
+                                                        <input type="password" class="form-control" id="new-pass"  placeholder="Новый пароль" name="new-pass">
+                                                    </div>
+                                                    <label class="control-label mb-10" for="confirm-pass">Повторите пароль</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon"><i class="icon-lock"></i></div>
+                                                        <input type="password" class="form-control" id="confirm-pass"  placeholder="Повторите пароль" name="confirm-pass">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-actions mt-10">
+                                                <button type="submit" id="pass-change" class="btn btn-success mr-10 mb-30">Сменить пароль</button>
+                                            </div>
+                                        </form>*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @if (User.IsInRole(@RoleConstant.RoleRoot))
+    {
+        <div id="tab-exceptions" class="tab-pane fade" role="tabpanel">
+            <!-- Row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="">
+                        <div class="panel-wrapper collapse in">
+                            <div class="panel-body pa-0">
+                                <div class="col-sm-8 col-xs-8">
+                                    Something content
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+}
+    </div>
+</div>
+
+@section scripts{
+<script src="~/Scripts/CustomScripts/Validate/validation.js"></script>
+    }

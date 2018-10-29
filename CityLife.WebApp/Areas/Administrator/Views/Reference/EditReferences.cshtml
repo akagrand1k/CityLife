@@ -1,0 +1,57 @@
+﻿@model CityLife.WebApp.Areas.Administrator.Models.References.ApplicationReferenceViewModel
+@{
+    ViewBag.Title = "Редактирование  справочника";
+}
+<!-- BEGIN SAMPLE FORM PORTLET-->
+<div class="portlet light">
+    <div class="portlet-title">
+        <div class="caption font-green-haze">
+            <i class="icon-settings font-green-haze"></i>
+            <span class="caption-subject bold uppercase"> Редактирование раздела</span>
+        </div>
+    </div>
+    <div class="portlet-body form">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+            <div class="form-body">
+                @Html.AntiForgeryToken()
+
+                <div class="form-group form-md-line-input">
+                    <label class="col-md-2 control-label" for="form_control_1">Наименование</label>
+                    <div class="col-md-5">
+                        @Html.TextBoxFor(x => x.Name, new { @class = "required form-control" })
+                        @Html.ValidationMessageFor(x => x.Name)
+                        <div class="form-control-focus">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group form-md-line-input">
+                    <label class="col-md-2 control-label">Родительский раздел</label>
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.ParentId, new System.Web.Mvc.SelectList(ViewBag.ListReferences, "Id", "Name"), "Укажите из списка родительский раздел",
+         new { @class = "table-group-action-input form-control input-medium" })
+                    </div>
+                </div>
+
+                <div class="form-group form-md-line-input">
+                    <label class="col-md-2 control-label">Является родительской записю ? (да/нет)</label>
+                    <div class="col-md-5">
+                        @Html.CheckBoxFor(x=>x.IsParent)
+                    </div>
+                </div>
+                <div class="form-group form-md-line-input">
+                    <label class="col-md-2 control-label">Активна ? (да/нет)</label>
+                    <div class="col-md-5">
+                        @Html.CheckBoxFor(x => x.IsActive)
+                    </div>
+                </div>
+                @Html.ValidationSummary()
+                <button class="btn green">
+                    Сохранить
+                </button>
+            </div>
+        }
+    </div>
+</div>
+<!-- END SAMPLE FORM PORTLET-->

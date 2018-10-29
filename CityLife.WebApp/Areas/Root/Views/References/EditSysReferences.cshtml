@@ -1,0 +1,50 @@
+﻿@model CityLife.WebApp.Areas.Root.Models.References.ApplicationSysReferenceViewModel
+@{
+    ViewBag.Title = "Редактирование системного справочника";
+}
+<div class="row mt-10">
+    <div class="col-md-12">
+        <div class="panel panel-default card-view">
+            <div class="panel-wrapper collapse in">
+                <div class="panel-heading">
+                    <h6 class="panel-title txt-dark">
+                        Редактирование
+                    </h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default card-view">
+            <div class="panel-wrapper collapse in">
+                <div class="panel-body">
+                    @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+                        <div class="form-body">
+                            @Html.AntiForgeryToken()
+
+                            @Html.HiddenFor(x => x.Key)
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-2 control-label" for="form_control_1">Значение</label>
+                                <div class="col-md-5">
+                                    @Html.TextBoxFor(x => x.Value, new { @class = "required form-control" })
+                                    @Html.ValidationMessageFor(x => x.Value)
+                                    <div class="form-control-focus">
+                                    </div>
+                                </div>
+                            </div>
+                            @Html.ValidationSummary()
+                            <button class="btn btn-primary">
+                                Сохранить
+                            </button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- END SAMPLE FORM PORTLET-->

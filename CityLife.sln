@@ -1,0 +1,158 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DAL", "DAL", "{97232CAF-3070-4EB3-AF90-39CF39C2C67D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BLL", "BLL", "{8C12DE41-1D39-4606-B076-DB60AB5ED566}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PL", "PL", "{9F818316-3F9E-4043-8144-55552F9336B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CityLife.Entities", "CityLife.Entities\CityLife.Entities.csproj", "{F2948DE2-FAC0-48F0-A2A3-DD27C6F7691A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CityLife.WebApp", "CityLife.WebApp\CityLife.WebApp.csproj", "{AF487E48-8393-470F-8E3D-D12BEFF9FFDE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CityLife.IoC", "CityLife.IOC\CityLife.IoC.csproj", "{09D71447-81A5-4C30-B01D-4C34267DDC56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CityLife.BusinessLogic", "CityLife.BusinessLogic\CityLife.BusinessLogic.csproj", "{3ABEECBA-12B5-4893-99E3-FA4204A3BAB3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CityLife.Extensions", "CityLife.Extensions\CityLife.Extensions.csproj", "{E377473B-E21C-4EE8-9992-299C6E62AC71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CityLife.DALInterfaces", "CityLife.DataAccess.Interfaces\CityLife.DALInterfaces.csproj", "{F0F7A58C-79BF-4800-AD86-19855C86A273}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CityLife.DALImplementation", "CityLife.DALImplementation\CityLife.DALImplementation.csproj", "{71429A1E-E5F3-400D-833B-A8E4A67AB8FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CityLife.Tests", "CityLife.Tests\CityLife.Tests.csproj", "{426C0790-1C01-4312-A5B0-D74253A8C0E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CityLife.Authenticate", "CityLife.Authenticate\CityLife.Authenticate.csproj", "{4DE45B9C-A738-4BEE-A1AF-1C0565B66812}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{958142A0-7DEF-42B0-B62E-213DBE47703A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{CF830678-BE43-4415-B37D-144A5FB21262}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{48A47FCF-290A-4A21-B8B3-68C40D209E2C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CityLife.ServicesTests", "CityLife.ServicesTests\CityLife.ServicesTests.csproj", "{935CEFEB-3526-49FA-BF6A-990492470BF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KatanaContrib.Security.VK", "KatanaContrib.Security.VK\KatanaContrib.Security.VK.csproj", "{7B12F103-5CC1-4BE7-81E5-C0D8AA532FDD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F2948DE2-FAC0-48F0-A2A3-DD27C6F7691A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2948DE2-FAC0-48F0-A2A3-DD27C6F7691A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2948DE2-FAC0-48F0-A2A3-DD27C6F7691A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2948DE2-FAC0-48F0-A2A3-DD27C6F7691A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF487E48-8393-470F-8E3D-D12BEFF9FFDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF487E48-8393-470F-8E3D-D12BEFF9FFDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF487E48-8393-470F-8E3D-D12BEFF9FFDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF487E48-8393-470F-8E3D-D12BEFF9FFDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09D71447-81A5-4C30-B01D-4C34267DDC56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09D71447-81A5-4C30-B01D-4C34267DDC56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09D71447-81A5-4C30-B01D-4C34267DDC56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09D71447-81A5-4C30-B01D-4C34267DDC56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3ABEECBA-12B5-4893-99E3-FA4204A3BAB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3ABEECBA-12B5-4893-99E3-FA4204A3BAB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3ABEECBA-12B5-4893-99E3-FA4204A3BAB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3ABEECBA-12B5-4893-99E3-FA4204A3BAB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E377473B-E21C-4EE8-9992-299C6E62AC71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E377473B-E21C-4EE8-9992-299C6E62AC71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E377473B-E21C-4EE8-9992-299C6E62AC71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E377473B-E21C-4EE8-9992-299C6E62AC71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0F7A58C-79BF-4800-AD86-19855C86A273}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0F7A58C-79BF-4800-AD86-19855C86A273}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0F7A58C-79BF-4800-AD86-19855C86A273}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0F7A58C-79BF-4800-AD86-19855C86A273}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71429A1E-E5F3-400D-833B-A8E4A67AB8FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71429A1E-E5F3-400D-833B-A8E4A67AB8FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71429A1E-E5F3-400D-833B-A8E4A67AB8FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71429A1E-E5F3-400D-833B-A8E4A67AB8FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{426C0790-1C01-4312-A5B0-D74253A8C0E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{426C0790-1C01-4312-A5B0-D74253A8C0E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{426C0790-1C01-4312-A5B0-D74253A8C0E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{426C0790-1C01-4312-A5B0-D74253A8C0E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DE45B9C-A738-4BEE-A1AF-1C0565B66812}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DE45B9C-A738-4BEE-A1AF-1C0565B66812}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DE45B9C-A738-4BEE-A1AF-1C0565B66812}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DE45B9C-A738-4BEE-A1AF-1C0565B66812}.Release|Any CPU.Build.0 = Release|Any CPU
+		{935CEFEB-3526-49FA-BF6A-990492470BF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{935CEFEB-3526-49FA-BF6A-990492470BF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{935CEFEB-3526-49FA-BF6A-990492470BF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{935CEFEB-3526-49FA-BF6A-990492470BF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B12F103-5CC1-4BE7-81E5-C0D8AA532FDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B12F103-5CC1-4BE7-81E5-C0D8AA532FDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B12F103-5CC1-4BE7-81E5-C0D8AA532FDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B12F103-5CC1-4BE7-81E5-C0D8AA532FDD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F2948DE2-FAC0-48F0-A2A3-DD27C6F7691A} = {958142A0-7DEF-42B0-B62E-213DBE47703A}
+		{AF487E48-8393-470F-8E3D-D12BEFF9FFDE} = {9F818316-3F9E-4043-8144-55552F9336B5}
+		{09D71447-81A5-4C30-B01D-4C34267DDC56} = {CF830678-BE43-4415-B37D-144A5FB21262}
+		{3ABEECBA-12B5-4893-99E3-FA4204A3BAB3} = {8C12DE41-1D39-4606-B076-DB60AB5ED566}
+		{E377473B-E21C-4EE8-9992-299C6E62AC71} = {CF830678-BE43-4415-B37D-144A5FB21262}
+		{F0F7A58C-79BF-4800-AD86-19855C86A273} = {97232CAF-3070-4EB3-AF90-39CF39C2C67D}
+		{71429A1E-E5F3-400D-833B-A8E4A67AB8FB} = {97232CAF-3070-4EB3-AF90-39CF39C2C67D}
+		{426C0790-1C01-4312-A5B0-D74253A8C0E7} = {48A47FCF-290A-4A21-B8B3-68C40D209E2C}
+		{4DE45B9C-A738-4BEE-A1AF-1C0565B66812} = {CF830678-BE43-4415-B37D-144A5FB21262}
+		{935CEFEB-3526-49FA-BF6A-990492470BF4} = {48A47FCF-290A-4A21-B8B3-68C40D209E2C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D5FA381F-10F3-4788-BDEE-BFA180B28263}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 12
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://educationinf.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = CityLife.Entities\\CityLife.Entities.csproj
+		SccProjectTopLevelParentUniqueName1 = CityLife.sln
+		SccProjectName1 = CityLife.Entities
+		SccLocalPath1 = CityLife.Entities
+		SccProjectUniqueName2 = CityLife.WebApp\\CityLife.WebApp.csproj
+		SccProjectTopLevelParentUniqueName2 = CityLife.sln
+		SccProjectName2 = CityLife.WebApp
+		SccLocalPath2 = CityLife.WebApp
+		SccProjectUniqueName3 = CityLife.IOC\\CityLife.IoC.csproj
+		SccProjectTopLevelParentUniqueName3 = CityLife.sln
+		SccProjectName3 = CityLife.IOC
+		SccLocalPath3 = CityLife.IOC
+		SccProjectUniqueName4 = CityLife.BusinessLogic\\CityLife.BusinessLogic.csproj
+		SccProjectTopLevelParentUniqueName4 = CityLife.sln
+		SccProjectName4 = CityLife.BusinessLogic
+		SccLocalPath4 = CityLife.BusinessLogic
+		SccProjectUniqueName5 = CityLife.Extensions\\CityLife.Extensions.csproj
+		SccProjectTopLevelParentUniqueName5 = CityLife.sln
+		SccProjectName5 = CityLife.Extensions
+		SccLocalPath5 = CityLife.Extensions
+		SccProjectUniqueName6 = CityLife.DataAccess.Interfaces\\CityLife.DALInterfaces.csproj
+		SccProjectTopLevelParentUniqueName6 = CityLife.sln
+		SccProjectName6 = CityLife.DataAccess.Interfaces
+		SccLocalPath6 = CityLife.DataAccess.Interfaces
+		SccProjectUniqueName7 = CityLife.DALImplementation\\CityLife.DALImplementation.csproj
+		SccProjectTopLevelParentUniqueName7 = CityLife.sln
+		SccProjectName7 = CityLife.DALImplementation
+		SccLocalPath7 = CityLife.DALImplementation
+		SccProjectUniqueName8 = CityLife.Tests\\CityLife.Tests.csproj
+		SccProjectTopLevelParentUniqueName8 = CityLife.sln
+		SccProjectName8 = CityLife.Tests
+		SccLocalPath8 = CityLife.Tests
+		SccProjectUniqueName9 = CityLife.Authenticate\\CityLife.Authenticate.csproj
+		SccProjectTopLevelParentUniqueName9 = CityLife.sln
+		SccProjectName9 = CityLife.Authenticate
+		SccLocalPath9 = CityLife.Authenticate
+		SccProjectUniqueName10 = CityLife.ServicesTests\\CityLife.ServicesTests.csproj
+		SccProjectTopLevelParentUniqueName10 = CityLife.sln
+		SccProjectName10 = CityLife.ServicesTests
+		SccLocalPath10 = CityLife.ServicesTests
+		SccProjectUniqueName11 = KatanaContrib.Security.VK\\KatanaContrib.Security.VK.csproj
+		SccProjectName11 = KatanaContrib.Security.VK
+		SccLocalPath11 = KatanaContrib.Security.VK
+	EndGlobalSection
+EndGlobal
